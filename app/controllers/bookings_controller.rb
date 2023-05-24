@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :destroy]
-
+  # test
   def index
     @bookings = Booking.all
   end
