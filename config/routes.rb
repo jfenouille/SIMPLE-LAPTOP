@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     resources :products
     resources :bookings
   end
-  resources :products, only: :destroy
+  resources :products, only: %i[create index show new destroy]
   resources :bookings, only: :destroy
 end
