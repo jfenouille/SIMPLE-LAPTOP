@@ -11,12 +11,29 @@
   </div>
   <div class="row">
     <% @products.each do |product| %>
-      <div class="co-12 col-sm-6 col-md-4 mb-3">
-        <%= link_to product_path(product), class:"text-decoration-none" do %>
-            <%= product.brand %>
+      <div class="col-sm-6 col-md-4 mb-3">
+      <div class="card">
+      <img src="<%= product.image_url %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= product.brand %></h5>
+        <p class="card-text"><%= product.specs %></p>
+        <%= link_to "view details", product_path(product), class:"btn btn-dark"  %>
+      </div>
+    </div>
+        
+            
           </div>
-        <% end %>
       </div>
     <% end %>
+
+
+    <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
   </div>
 </div>
