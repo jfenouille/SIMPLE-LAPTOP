@@ -1,0 +1,21 @@
+ <section class="pt-5 pb-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-7">
+            <img src=" <%= @product.image_url %> " alt=""
+              class="img-fluid mx-auto d-block">
+          </div>
+          <div class="col-5">
+            <h1 class="mb-2 display-5 fw-bold"><%= @product.brand %></h1>
+                <%= simple_form_for @product do |f| %>
+                    <%= f.input :brand %>
+                    <%= f.input :specs , as: :text, input_html: { rows: 5 } %>
+                    <%= f.input :price %>
+                    <%= f.input :image_url %>
+                    <%= f.input :availability, as: :boolean %>
+                    <%= f.submit class: 'btn btn-dark' %>
+                <% end %>
+          </div>
+        </div>
+      </div>
+    </section>

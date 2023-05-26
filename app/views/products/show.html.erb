@@ -8,15 +8,18 @@
           <div class="col-5">
             <h1 class="mb-2 display-5 fw-bold"><%= @product.brand %></h1>
             <p class="lead">Here are some of our top features.</p>
-            <ol class="list-features lead list-l">
-              <li>Create responsive pages</li>
-              <li>Unlimited Layouts</li>
-              <li>Built to scale</li>
-              <li>User friendly and intuitive</li>
-              <li>Media browser soon</li>
-              <li>Bootstrap 5 support</li>
-            </ol>
-            <%= link_to "Book", new_user_session_path, class: "btn btn-dark" %>
+            <% specs_lines = @product.specs.lines %>
+              <ul class="list-features lead list-l">
+                <% specs_lines.each do |line| %>
+                  <li><%= line.chomp %></li>
+                <% end %>
+              </ul>
+              <% if @product.availability?%>
+                <p class="lead text-success text-uppercase font-weight-bold">Available</p>
+                <%= link_to "Book", new_user_session_path, class: "btn btn-dark" %>
+              <% else %>
+                <p class="text-danger text-uppercase font-weight-bold">Not Available</p>
+              <% end %>
           </div>
         </div>
       </div>
