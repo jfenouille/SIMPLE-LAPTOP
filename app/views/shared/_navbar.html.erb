@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "https://cdn.imgbin.com/4/9/13/computer-icon-monitor-icon-laptop-icon-ktYCUZSS.jpg" %>
     <% end %>
 
@@ -12,14 +12,24 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
 
-          <li class="nav-item nav-link">
-            My Account
-          </li>
-          <li class="nav-item nav-link">
-            <%= current_user.first_name %>
-          </li>
           <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-ghost" %>
+            <%= link_to "All Laptops", products_path, class:"nav-item nav-link" %>
+          </li>
+
+          <% if current_user.renter? %>
+            <li class="nav-item">
+              <%= link_to "My Laptops", products_path(user_id: current_user.id), class:"nav-item nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Add Laptops", new_product_path, class:"nav-item nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Apply to be a renter", products_path, class:"btn btn-dark btn-round mx-3" %>
+          <% end %>
+          </li>
+          <li class="nav-item ">
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-ghost " %>
             </div>
           </li>
         <% else %>
