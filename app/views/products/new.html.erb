@@ -8,6 +8,7 @@
           <%= f.input :specs %>
           <%= f.input :price %>
           <%= f.input :image_url %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.submit class: 'btn btn-flat' %>
         <% end %>
       </div>

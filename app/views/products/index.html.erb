@@ -7,28 +7,26 @@
   <div class="d-flex align-items-center justify-content-between mb-3">
     <h3 class="mb-0">All products</h3>
   </div>
-    <div class="cards">
-      <% @products.each do |product| %>
-        <div class="row">
-        <div class="card col-sm-4 col-md-4 mb-3">
-          <img src="<%= product.image_url %>" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= product.brand %>
-            </h5>
-            <p class="card-text">
-              <%= product.specs %>
-            </p>
-            <% if product.availability?%>
-              <p class="text-danger font-weight-bold card-text text-uppercase ">Available</p>
-              <% else %>
-                <p class="text-danger card-text text-uppercase font-weight-bold">Not Available</p>
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="col-sm-6 col-md-4 mb-3">
+            <img src="<%= product.image_url %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold mt-2">
+                <%= product.brand %>
+              </h5>
+              <p class="card-text">
+                <%= product.specs %>
+              </p>
+              <% if product.availability?%>
+                <p class="text-danger font-weight-bold card-text text-uppercase ">Available</p>
+                <% else %>
+                  <p class="text-danger card-text text-uppercase font-weight-bold">Not Available</p>
                 <% end %>
                   <%= link_to "view details" , product_path(product), class:"btn btn-dark" %>
+            </div>
           </div>
-        </div>
-  <% end %>
-
+      <% end %>
     </div>
   </div>
 
