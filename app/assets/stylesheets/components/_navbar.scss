@@ -22,6 +22,10 @@
   transition: opacity 0.3s ease;
 }
 
+.btn-round {
+  border-radius: 50px;
+}
+
 .btn-ghost:hover {
   opacity: 1;
 }

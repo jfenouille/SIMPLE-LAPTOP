@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy]
 
   def index
-    @products = Product.all
+    if params[:user_id]
+      @products = Product.where(user_id: params[:user_id])
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -34,6 +38,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:brand, :price, :specs, :image_url)
+    params.require(:product).permit(:brand, :price, :specs, :image_url, :user_id)
   end
 end
