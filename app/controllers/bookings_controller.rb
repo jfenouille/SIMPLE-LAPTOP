@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :destroy]
+  before_action :set_booking, only: [ :show, :destroy]
   # test
   def index
     @bookings = Booking.all
@@ -10,11 +10,12 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:format])
   end
 
   def create
     @booking = Booking.new(booking_params)
+
     if @booking.save
       redirect_to booking_path(@booking)
     else
