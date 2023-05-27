@@ -16,7 +16,7 @@
               </ul>
               <% if @product.availability?%>
                 <p class="lead text-success text-uppercase font-weight-bold">Available</p>
-                <%= link_to "Book", new_booking_path(@product), class: "btn btn-dark" %>
+                <%= link_to "Book", new_user_session_path, class: "btn btn-dark" %>
               <% else %>
                 <p class="text-danger text-uppercase font-weight-bold">Not Available</p>
               <% end %>

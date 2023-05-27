@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     resources :bookings
   end
   resources :products
-  resources :bookings, only: :destroy
+  resources :bookings
 end
