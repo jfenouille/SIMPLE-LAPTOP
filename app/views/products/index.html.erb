@@ -10,7 +10,7 @@
       <div class="row">
         <% @products.each do |product| %>
           <div class="col-sm-6 col-md-4 mb-3">
-            <img src="<%= product.image_url %>" class="card-img-top" style: "" alt="...">
+            <img src="<%= product.image_url %>" class="card-img-top" style = "mix-blend-mode: darken" alt="...">
             <div class="card-body">
               <h5 class="card-title font-weight-bold mt-2">
                 <%= product.brand %>
