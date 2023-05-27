@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @product = Product.find(params[:id])
   end
 
   def create
