@@ -13,13 +13,13 @@
             <img src="<%= product.image_url %>" class="card-img-top" style = "mix-blend-mode: darken" alt="...">
             <div class="card-body">
               <h5 class="card-title font-weight-bold mt-2">
-                <%= product.brand %>
+               <strong> <%= product.brand %></strong>
               </h5>
               <p class="card-text">
-                <%= simple_format(product.specs) %>
+                <%= (product.specs).split[0..5].join(' ') %>
               </p>
               <p class="card-text font-weight-bold">
-                Rs <%= product.price %>
+                <strong>  Rs <%= product.price %> </strong>
               </p>
 
               <% if product.availability?%>
