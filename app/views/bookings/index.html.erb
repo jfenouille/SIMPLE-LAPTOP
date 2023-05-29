@@ -1,0 +1,65 @@
+<div class="cover d-flex align-items-center justify-content-center margin-top">
+  <div class="container text-secondary my-5">
+    <h1>All Bookings</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row gx-5 gy-0">
+
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Laptop book</th>
+          <th scope="col">Days & Price</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+       <% @bookings.each do |booking| %>
+        <tr>
+          <td>
+            <div class="ms-3">
+            <p class="fw-bold mb-1"><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+            <p class="text-muted mb-0"><%= booking.user.email %> </p>
+          </div>
+          </td>
+
+          <td><%= link_to booking.product.brand, product_path(booking.product), class: "text-decoration-none text-dark fw-normal mb-1"%> </td>
+
+          <td>
+            <div class="ms-3">
+            <p class="fw-normal mb-1"> Days: <%= booking.days %></p>
+            <p class="text-muted mb-0">Price: <%= booking.product.price %> </p>
+          </div>
+          </td>
+
+        <td>
+          <% if booking.payment? %>
+          <span class="booking-success">Paid</span> 
+          <% else %>
+            <span class="booking-awaiting">awaiting payment</span> 
+          <% end %>
+          </td>
+
+        <% if booking.product.user == current_user || booking.user == current_user%>
+            <td><%= link_to "Show" , booking_path(booking), class:"btn btn-outline-dark mx-3" %></td>
+            <td><% if !booking.payment? %>
+            <%= link_to "Edit", edit_booking_path(booking), class: "btn btn-outline-dark"%>
+            <% end %>
+            </td>
+            <td><%= link_to "Delete", booking_path(booking), data: { turbo_method: "delete", turbo_confirm: "Are you sure you want to delete this product?" }, class: "btn btn-outline-dark"%></td>
+        <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+        
+    </div>
+  </div>
+
+</div>
+</div>
+</div>

@@ -21,8 +21,12 @@
               <%= link_to "My Laptops", products_path(user_id: current_user.id), class:"nav-item nav-link" %>
             </li>
             <li class="nav-item">
+              <%= link_to "My Bookings", bookings_path(user_id: current_user.id), class:"nav-item nav-link" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "Add Laptops", new_product_path, class:"nav-item nav-link" %>
             </li>
+            
           <% else %>
             <li class="nav-item">
               <%= link_to "Apply to be a renter", root_path, class:"btn btn-dark btn-round mx-3" %>

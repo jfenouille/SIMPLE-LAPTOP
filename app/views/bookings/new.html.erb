@@ -1,19 +1,25 @@
  <section class="pt-5 pb-5">
       <div class="container">
       <h1 class="mb-2 display-5 fw-bold m-5"> Book this laptop</h1>
-        <div class="row align-items-center">
+        <div class="row align-items-center vh-100">
           <div class="col-7">
             <img src=" <%= @product.image_url %> " alt=""
-              class="img-fluid mx-auto d-block">
+              class="img-fluid mx-auto d-block image-blend">
           </div>
           <div class="col-5">
             <h2 class="mb-2 display-5 fw-bold"><%= @product.brand %></h2>
+            <p class="lead fw-bolder  ">
+            Rs <%= @product.price %>
+            </p>
 
             <%= simple_form_for @booking do |f| %>
-              <%= f.hidden_field :product_id, value: @product %>
+              <%= f.hidden_field :product_id, value: @product.id %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit class: 'btn btn-dark' %>
+              <%= f.input :days, input_html: { type: 'number' } %>
+              <%= f.submit 'Reserve', class: 'btn btn-dark' %>
             <% end %>
+
+            <%= link_to "Back to Laptops list", products_path, class:" btn px-0 fw-bold" %>
           </div>
         </div>
       </div>
