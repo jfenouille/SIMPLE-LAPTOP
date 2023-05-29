@@ -12,21 +12,22 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
 
-          <li class="nav-item">
-            <%= link_to "All Laptops", products_path, class:"nav-item nav-link" %>
-          </li>
+
+        <li class="nav-item">
+          <%= link_to "All Laptops", products_path, class:"nav-item nav-link" %>
+        </li>
 
           <% if current_user.renter? %>
-            <li class="nav-item">
-              <%= link_to "My Laptops", products_path(user_id: current_user.id), class:"nav-item nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "My Bookings", bookings_path(user_id: current_user.id), class:"nav-item nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Add Laptops", new_product_path, class:"nav-item nav-link" %>
-            </li>
-            
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-item nav-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            My Account
+          </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "My Laptops", products_path(user_id: current_user.id), class: "dropdown-item" %>
+              <%= link_to "My Bookings", bookings_path(user_id: current_user.id), class: "dropdown-item" %>
+              <%= link_to "Add Laptops", new_product_path, class: "dropdown-item" %>
+            </div>
+        </li>
           <% else %>
             <li class="nav-item">
               <%= link_to "Apply to be a renter", root_path, class:"btn btn-dark btn-round mx-3" %>
