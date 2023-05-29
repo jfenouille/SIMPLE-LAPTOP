@@ -9,7 +9,7 @@
     <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
         <tr>
-          <th scope="col">Name</th>
+          <th scope="col">Booker</th>
           <th scope="col">Laptop book</th>
           <th scope="col">Days & Price</th>
           <th scope="col">Status</th>
@@ -21,7 +21,7 @@
        <% @bookings.each do |booking| %>
         <tr>
           <td>
-            <div class="ms-3">
+            <div>
             <p class="fw-bold mb-1"><%= booking.user.first_name %> <%= booking.user.last_name %></p>
             <p class="text-muted mb-0"><%= booking.user.email %> </p>
           </div>
@@ -30,9 +30,9 @@
           <td><%= link_to booking.product.brand, product_path(booking.product), class: "text-decoration-none text-dark fw-normal mb-1"%> </td>
 
           <td>
-            <div class="ms-3">
+            <div>
             <p class="fw-normal mb-1"> Days: <%= booking.days %></p>
-            <p class="text-muted mb-0">Price: <%= booking.product.price %> </p>
+            <p class="text-muted mb-0">Price: Rs <%= booking.product.price * booking.days %> </p>
           </div>
           </td>
 
