@@ -1,31 +1,31 @@
-<div class="cover mb-4 d-flex align-items-center justify-content-center">
-  <div class="container text-center text-secondary mt-5">
-    <h1></h1>
+<div class="cover d-flex align-items-center justify-content-center">
+  <div class="container text-secondary mt-5 margin-top">
+    <h1>Discover all laptops</h1>
   </div>
 </div>
-<div class="container py-5">
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">Discover all laptops</h3>
-  </div>
-      <div class="row">
+<div class="container">
+      <div class="row gx-5 gy-0">
         <% @products.each do |product| %>
-          <div class="col-sm-6 col-md-4 mb-3">
-            <img src="<%= product.image_url %>" class="card-img-top" style = "mix-blend-mode: darken" alt="...">
+          <div class="col-sm-6 col-md-4 mb-5">
+            <img src="<%= product.image_url %>" class="card-img-top image-blend" alt="...">
             <div class="card-body">
-              <h5 class="card-title font-weight-bold mt-2">
+              <h5 class="card-title fw-bolder my-2">
                 <%= product.brand %>
               </h5>
-              <p class="card-text">
-                <%= simple_format(product.specs) %>
+                <% specs_lines = product.specs.lines[0..1] %>
+                 <% specs_lines.each do |line| %>
+                  <p class="card-text mb-0">
+                  <%= line.chomp.split[0..6 ].join(' ') %>
+                <% end %>
               </p>
-              <p class="card-text font-weight-bold">
+              <p class="card-text fw-bolder my-1">
                 Rs <%= product.price %>
               </p>
 
               <% if product.availability?%>
-                <p class="text-success font-weight-bold card-text text-uppercase ">Available</p>
+                <p class="text-success card-text text-uppercase">Available</p>
               <% else %>
-                <p class="text-danger card-text text-uppercase font-weight-bold">Not Available</p>
+                <p class="text-danger card-text text-uppercase">Not Available</p>
               <% end %>
 
               <div class="">
