@@ -4,7 +4,7 @@
       <img src=" <%= @product.image_url %> " alt="" class="img-fluid mx-auto d-block image-blend w-100">
     </div>
     <div class="col-5">
-      <h1 class="mb-2 display-5 fw-bold"><%= @product.brand %></h1>
+      <h2 class="mb-2 display-5 fw-bold"><%= @product.brand %></h2>
       <p class="lead">Here are your booking details.</p>
 
           <p class="lead">Number of days: <span class="fw-bold"><%= @booking.days %></span></p>
@@ -14,16 +14,16 @@
           <p class="lead">Status: <span class="fw-bold text-danger">Awaiting Payment</p>
           <% end %>
             <p class="lead">Booking N°: <span class="fw-bold"><%= @booking.id %></p>
-            <p class="lead">Price: <span class="fw-bold"><%= @booking.product.price * @booking.days %></p>
+            <p class="lead">Price: Rs <span class="fw-bold"><%= @booking.product.price * @booking.days %></p>
           <% if !@booking.payment? %>
-          <%= link_to "proceed to payment", booking_path(@booking), class: "btn btn-dark" %>
+          <%= link_to "proceed to payment", booking_confirmation_path(@booking), class: "btn btn-dark me-3" %>
           <% end %>
 
           <% if @booking.user == current_user %>
           <% if !@booking.payment? %>
-          <%= link_to "Edit" , edit_booking_path(@booking), class:"btn btn-outline-dark ms-3" %>
+          <%= link_to "Edit" , edit_booking_path(@booking), class:"btn btn-outline-dark me-3" %>
           <% end %>
-          <%= link_to "Delete", booking_path(@booking), data: { turbo_method: "delete", turbo_confirm: "Are you sure you want to delete this product?" }, class: "btn btn-outline-danger ms-3" %>
+          <%= link_to "Delete", booking_path(@booking), data: { turbo_method: "delete", turbo_confirm: "Are you sure you want to delete this product?" }, class: "btn btn-outline-danger" %>
 
           <% end %>
     </div>

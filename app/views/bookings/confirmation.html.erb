@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row d-flex align-items-center vh-100">
+    <div class="col-7">
+      <img src=" <%= @product.image_url %> " alt="" class="img-fluid mx-auto d-block image-blend">
+    </div>
+    <div class="col-5">
+      <h1 class="mb-5 display-5 fw-bold">Confirm your booking</h1>
+      <p class="lead">Here are your booking details.</p>
+      <p class="lead">Brand: <span class="fw-bold"><%= @product.brand %></p>
+      <p class="lead">Booking N°: <span class="fw-bold"><%= @booking.id %></p>
+      <p class="lead">Days: <span class="fw-bold"><%= @booking.id %></p>
+      <p class="lead">Price: Rs <span class="fw-bold"><%= @booking.product.price * @booking.days %></p>
+        <%= simple_form_for @booking do |f| %>
+          <%= f.hidden_field :price, value:  @booking.product.price * @booking.days %>
+          <%= f.hidden_field :payment, value:  true %>
+          <%= f.submit 'Confirm', class: 'btn btn-dark' %>
+        <% end %>
+    </div>
+  </div>
+</div>

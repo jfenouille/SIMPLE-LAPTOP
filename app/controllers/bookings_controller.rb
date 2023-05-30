@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [ :show, :destroy, :update, :edit]
+  before_action :set_booking, only: [ :show, :destroy, :update, :edit, :confirmation]
   # test
   def index
     @bookings = Booking.all
@@ -36,6 +36,17 @@ class BookingsController < ApplicationController
     end
   end
 
+  def confirmation
+    @product = @booking.product
+    if request.post? && booking_params[:status].present?
+      @booking.update(status: booking_params[:status])
+      @product.availability = false
+      @product.save
+      
+      redirect_to booking_path(@booking), notice: 'Booking confirmation successful!'
+    end
+  end
+
   def destroy
     @booking.destroy
     redirect_to bookings_path, status: :see_other
@@ -48,6 +59,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:payment, :days, :product_id, :user_id)
+    params.require(:booking).permit(:payment, :days, :product_id, :user_id, :price)
   end
 end

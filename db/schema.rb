@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_28_170907) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.index ["product_id"], name: "index_bookings_on_product_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_28_170907) do
     t.boolean "availability"
     t.string "specs"
     t.bigint "user_id", null: false
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url"
