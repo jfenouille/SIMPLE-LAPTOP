@@ -29,6 +29,12 @@ class BookingsController < ApplicationController
   end
 
   def update
+    if booking_params[:payment] == "true"
+      @product = @booking.product
+      @product.availability = false
+      @product.save!
+    end
+
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
@@ -38,13 +44,6 @@ class BookingsController < ApplicationController
 
   def confirmation
     @product = @booking.product
-    if request.post? && booking_params[:status].present?
-      @booking.update(status: booking_params[:status])
-      @product.availability = false
-      @product.save
-      
-      redirect_to booking_path(@booking), notice: 'Booking confirmation successful!'
-    end
   end
 
   def destroy
