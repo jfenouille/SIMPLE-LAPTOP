@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   end
   resources :products
   resources :bookings
+
+  get '/bookings/:id/confirmation', to: 'bookings#confirmation', as: 'booking_confirmation'
+
 end
