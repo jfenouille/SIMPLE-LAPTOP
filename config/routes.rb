@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :bookings
 
   get '/bookings/:id/confirmation', to: 'bookings#confirmation', as: 'booking_confirmation'
-
+  get '/bookings/:id/delivery', to: 'bookings#delivery', as: 'booking_delivery'
 end

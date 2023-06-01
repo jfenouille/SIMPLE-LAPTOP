@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row d-flex align-items-center text-center margin-top">
+    <h1 class="mb-5 display-5 fw-bold">Payment Confirmation!</h1>
+    <h2>Thank you for renting with us</h2>
+    <p class="lead">Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+    <p class="lead">Booking N°: <span class="fw-bold"><%= @booking.id %></p>
+    <p class="lead">Delivery Address: Avenue Chose, Chose</p>
+    <p class="lead">Phone Number: 50004903</p>
+  </div>
+</div>

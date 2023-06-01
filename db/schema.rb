@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_28_170907) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "days"
-    t.boolean "payment", null: false
+    t.boolean "payment"
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [ :show, :destroy, :update, :edit, :confirmation]
+  before_action :set_booking, only: [ :show, :destroy, :update, :edit, :confirmation, :delivery]
   # test
   def index
     @bookings = Booking.all
@@ -47,6 +47,9 @@ class BookingsController < ApplicationController
       @product.save!
       redirect_to root_path
     end
+  end
+
+  def delivery
   end
 
   def destroy
