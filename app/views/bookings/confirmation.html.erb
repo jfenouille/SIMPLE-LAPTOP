@@ -1,20 +1,21 @@
-<div class="container">
-  <div class="row d-flex align-items-center vh-100">
+<div class="container ">
+  <h1 class="mb-5 display-5 fw-bold margin-top">Confirm your booking</h1>
+  <div class="row d-flex align-items-center">
     <div class="col-7">
-  <h1 class="mb-5 display-5 fw-bold">Confirm your booking</h1>
+      <img src=" <%= @product.image_url %> " alt="" class="img-fluid mx-0 d-block image-blend w-50">
       <p class="lead">Here are your booking details.</p>
       <p class="lead">Brand: <span class="fw-bold"><%= @product.brand %></p>
       <p class="lead">Booking N°: <span class="fw-bold"><%= @booking.id %></p>
       <p class="lead">Days: <span class="fw-bold"><%= @booking.id %></p>
       <p class="lead">Price: Rs <span class="fw-bold"><%= @booking.product.price * @booking.days %></p>    </div>
-    <div class="col-5">
+    <div class="col-5 bg-white p-4">
         <div class="box-2">
             <div class="box-inner-2">
                 <div>
                     <p class="fw-bold">Payment Details</p>
                     <p class="dis mb-3">Complete your purchase by providing your payment details</p>
                 </div>
-                <form action="">
+                <div>  
                     <div class="mb-3">
                         <p class="dis fw-bold mb-2">Email address</p>
                         <input class="form-control" type="email" value="<%= current_user.email %>">
@@ -22,11 +23,11 @@
                     <div>
                         <p class="dis fw-bold mb-2">Card details</p>
                         <div class="d-flex align-items-center justify-content-between card-atm border rounded">
-                            <div class="fab fa-cc-visa ps-3"></div>
+                            <div class="fab fa-cc-visa px-2"></div>
                             <input type="text" class="form-control" placeholder="Card Details">
                             <div class="d-flex w-50">
-                                <input type="text" class="form-control px-0" placeholder="MM/YY">
-                                <input type="password" maxlength=3 class="form-control px-0" placeholder="CVV">
+                                <input type="text" id="dateInput" oninput="formatDate(this)" maxlength="4" class="form-control px-2" placeholder="MM/YY">
+                                <input type="password" maxlength=3 class="form-control px-2" placeholder="CVV">
                             </div>
                         </div>
                         <div class="my-3 cardname">
@@ -51,16 +52,17 @@
                                     <p class="fw-bold">Total</p>
                                     <p class="fw-bold">Rs <%= price %></p>
                                 </div>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
                                       <%= simple_form_for(@booking) do |f| %>
                                         <%= f.hidden_field :price, value:  @booking.product.price * @booking.days %>
                                         <%= f.hidden_field :payment, value:  true %>
-                                        <%= f.submit 'Confirm', class: 'btn btn-primary mt-2' %>
+                                        <%= f.submit 'Confirm', class: 'btn btn-primary mt-2 w-100' %>
                                       <% end %>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
 
