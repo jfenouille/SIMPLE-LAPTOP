@@ -30,7 +30,17 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      redirect_to booking_path(@booking)
+      if params[:source] == 'confirmation'
+        @product = @booking.product
+        @product.availability = false
+        @product.save!
+
+        redirect_to booking_delivery_path(@booking)
+      else
+        # Redirect for edit update
+        redirect_to booking_path(@booking)
+      end
+
     else
       render :new
     end
@@ -38,15 +48,6 @@ class BookingsController < ApplicationController
 
   def confirmation
     @product = @booking.product
-
-    # if booking_params[:payment] == "true"
-    if request.patch?
-
-      @product = @booking.product
-      @product.availability = false
-      @product.save!
-      redirect_to root_path
-    end
   end
 
   def delivery
