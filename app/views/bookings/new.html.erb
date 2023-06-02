@@ -15,7 +15,7 @@
       <%= simple_form_for @booking do |f| %>
         <%= f.hidden_field :product_id, value: @product.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.input :days, input_html: { type: 'number' } %>
+        <%= f.input :days, input_html: { type: 'number', value: 1 } %>
         <%= f.submit 'Reserve', class: 'btn btn-dark' %>
       <% end %>
 
@@ -23,3 +23,4 @@
     </div>
   </div>
 </div>
+  

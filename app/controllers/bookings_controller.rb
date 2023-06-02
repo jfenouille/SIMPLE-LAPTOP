@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
         @product = @booking.product
         @product.availability = false
         @product.save!
-
+        sleep(5)
         redirect_to booking_delivery_path(@booking)
       else
         # Redirect for edit update
