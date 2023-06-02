@@ -10,21 +10,84 @@
 		<div class="lc-block">
 			<div editable="rich">
 				<p class="lead">Experience the extraordinary with our exceptional laptop lending service. Our tech-savvy superheroes are here to deliver the perfect laptop solution for students, professionals, and adventurers alike. With lightning-fast processors, stunning graphics, and seamless functionality, our remarkable heroes will elevate your digital experience to new heights. Trust in our unparalleled expertise to bring innovation to your fingertips. Discover the power of our Laptop Lending Heroes and unlock limitless possibilities today!</p>
-
-
 				</p>
-
 			</div>
-		</div>
-
-		<div class="input-group rounded">
-			<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-			<span class="input-group-text border-0" id="search-addon">
-				<i class="fas fa-search"></i>
-			</span>
 		</div>
 	</div>
 </div>
+
+<div class="container">
+	<h2 class="mb-5 display-5 fw-bold margin-top">Best Laptops</h2>
+      <div class="row gx-5 gy-0">
+        <% @products.take(3).each do |product| %>
+          <div class="col-sm-6 col-md-4 mb-5">
+            <img src="<%= product.image_url %>" class="card-img-top image-blend" alt="...">
+            <div class="card-body">
+              <h5 class="card-title fw-bolder my-2">
+                <%= product.brand %>
+              </h5>
+                <% specs_lines = product.specs.lines[0..1] %>
+                 <% specs_lines.each do |line| %>
+                  <p class="card-text mb-0">
+                  <%= line.chomp.split[0..6].join(' ') %>
+                <% end %>
+              </p>
+              <p class="card-text fw-bolder my-1">
+                Rs <%= product.price %>
+              </p>
+
+              <% if product.availability?%>
+                <p class="text-success card-text text-uppercase">Available</p>
+              <% else %>
+                <p class="text-danger card-text text-uppercase">Not Available</p>
+              <% end %>
+
+              <div class="">
+                <%= link_to "view details" , product_path(product), class:"btn btn-dark" %>
+                </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
  
  
-  
+<div class="container">
+	<h2 class="mb-5 display-5 fw-bold margin-top">Most Booked this month</h2>
+      <div class="row gx-5 gy-0">
+        <% @products.take(3).each do |product| %>
+          <div class="col-sm-6 col-md-4 mb-5">
+            <img src="<%= product.image_url %>" class="card-img-top image-blend" alt="...">
+            <div class="card-body">
+              <h5 class="card-title fw-bolder my-2">
+                <%= product.brand %>
+              </h5>
+                <% specs_lines = product.specs.lines[0..1] %>
+                 <% specs_lines.each do |line| %>
+                  <p class="card-text mb-0">
+                  <%= line.chomp.split[0..6].join(' ') %>
+                <% end %>
+              </p>
+              <p class="card-text fw-bolder my-1">
+                Rs <%= product.price %>
+              </p>
+
+              <% if product.availability?%>
+                <p class="text-success card-text text-uppercase">Available</p>
+              <% else %>
+                <p class="text-danger card-text text-uppercase">Not Available</p>
+              <% end %>
+
+              <div class="">
+                <%= link_to "view details" , product_path(product), class:"btn btn-dark" %>
+                </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+ 
